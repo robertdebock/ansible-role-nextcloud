@@ -3,5 +3,5 @@
 # Ansible managed
 #
 repository:
-  description: Install and configure nextcloud on your system.
+  description: Install and configure Nextcloud on your system.
   homepage: https://robertdebock.nl/

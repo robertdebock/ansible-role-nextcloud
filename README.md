@@ -1,6 +1,6 @@
 # [nextcloud](#nextcloud)
 
-Install and configure nextcloud on your system.
+Install and configure Nextcloud on your system.
 
 |Travis|GitHub|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
@@ -43,7 +43,7 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
     - role: robertdebock.redis
     - role: robertdebock.remi
       remi_enabled_repositories:
-        - php73
+        - php74
     - role: robertdebock.php
     - role: robertdebock.php_fpm
     - role: robertdebock.mysql
