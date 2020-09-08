@@ -4,7 +4,7 @@ Install and configure Nextcloud on your system.
 
 |Travis|GitHub|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-nextcloud.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-nextcloud)|[![github](https://github.com/robertdebock/ansible-role-nextcloud/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-nextcloud/actions)|[![quality](https://img.shields.io/ansible/quality/50629)](https://galaxy.ansible.com/robertdebock/nextcloud)|[![downloads](https://img.shields.io/ansible/role/d/50629)](https://galaxy.ansible.com/robertdebock/nextcloud)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-nextcloud.svg)](https://github.com/robertdebock/ansible-role-nextcloud/releases/)|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-nextcloud.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-nextcloud)|[![github](https://github.com/robertdebock/ansible-role-nextcloud/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-nextcloud/actions)|[![quality](https://img.shields.io/ansible/quality/50634)](https://galaxy.ansible.com/robertdebock/nextcloud)|[![downloads](https://img.shields.io/ansible/role/d/50634)](https://galaxy.ansible.com/robertdebock/nextcloud)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-nextcloud.svg)](https://github.com/robertdebock/ansible-role-nextcloud/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -41,9 +41,9 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
           common_name: "{{ ansible_fqdn }}"
     - role: robertdebock.httpd
     - role: robertdebock.redis
-    - role: robertdebock.remi
-      remi_enabled_repositories:
-        - php74
+    # - role: robertdebock.remi
+    #   remi_enabled_repositories:
+    #     - php74
     - role: robertdebock.php
     - role: robertdebock.php_fpm
     - role: robertdebock.mysql
@@ -80,7 +80,7 @@ These variables are set in `defaults/main.yml`:
 # defaults file for nextcloud
 
 # The version of nextcloud to install.
-nextcloud_version: 10.5.0
+nextcloud_version: 19.0.2
 
 # The domain under which this server will be available. For example:
 # "localhost" or "nextcloud.example.com". Does not include protocol identifier,
@@ -116,7 +116,7 @@ The following roles can be installed to ensure all requirements are met, using `
 - robertdebock.php_fpm
 - robertdebock.python_pip
 - robertdebock.redis
-- robertdebock.remi
+# - robertdebock.remi
 
 ```
 
