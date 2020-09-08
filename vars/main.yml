@@ -3,93 +3,52 @@
 
 _nextcloud_requirements:
   default:
-    - php-curl
-    - php-fpm
     - php-gd
     - php-intl
     - php-json
-    - php-ldap
     - php-mbstring
     - php-mysqlnd
     - php-pecl-apcu
     - php-pecl-redis
-    - php-process
-    - php-xml
     - php-zip
   Alpine:
-    - php7-apcu
-    - php7-ctype
-    - php7-curl
-    - php7-dom
-    - php7-fpm
     - php7-gd
-    - php7-iconv
     - php7-intl
     - php7-json
-    - php7-ldap
     - php7-mbstring
     - php7-mysqlnd
-    - php7-mysqli
-    - php7-pdo
-    - php7-posix
-    - php7-simplexml
-    - php7-xmlreader
-    - php7-xmlwriter
-    - php7-xml
     - php7-zip
   RedHat:
-    - php-curl
-    - php-fpm
     - php-gd
-    - php-intl
-    - php-json
-    - php-ldap
     - php-mbstring
-    - php-mysqlnd
+    - php-intl
     - php-pecl-apcu
-    # Does not exist for CentOS 8.
-    # - php-pecl-redis
-    - php-process
-    - php-xml
+    - php-mysqlnd
+    - php-opcache
+    - php-json
     - php-zip
+    - php-redis
+    - php-imagick
   Debian:
-    - php-apcu
-    - php-common
-    - php-curl
-    - php-fpm
     - php-gd
     - php-intl
-    - php-ldap
     - php-mbstring
     - php-mysql
-    - php-xml
     - php-zip
   Suse:
-    - php-posix
-    - php7-ctype
-    - php7-curl
-    - php7-dom
-    - php7-fpm
     - php7-gd
-    - php7-iconv
     - php7-intl
     - php7-json
-    - php7-ldap
     - php7-mbstring
     - php7-mysql
-    - php7-pdo
-    - php7-xmlreader
-    - php7-xmlwriter
     - php7-zip
-    - php7-zlib
 
 nextcloud_requirements: "{{ _nextcloud_requirements[ansible_os_family] | default(_nextcloud_requirements['default']) }}"
 
 nextcloud_sebooleans:
-  - httpd_tmp_exec
-  - httpd_unified
+  - httpd_can_network_connect
 
-nextcloud_archive: "https://dnextload.nextcloud.org/community/nextcloud-{{ nextcloud_version }}.zip"
+nextcloud_archive: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip
 
 _nextcloud_destination:
   default: /var/www/html
