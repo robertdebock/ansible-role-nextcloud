@@ -55,6 +55,13 @@ _nextcloud_httpd_owner:
 
 nextcloud_httpd_owner: "{{ _nextcloud_httpd_owner[ansible_os_family] | default(_nextcloud_httpd_owner['default']) }}"
 
+_nextcloud_httpd_group:
+  default: apache
+  Debian: www-data
+  Suse: www
+
+nextcloud_httpd_group: "{{ _nextcloud_httpd_group[ansible_os_family] | default(_nextcloud_httpd_group['default']) }}"
+
 nextcloud_archive: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
 
 _nextcloud_destination:
