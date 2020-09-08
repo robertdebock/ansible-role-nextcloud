@@ -1,0 +1,62 @@
+---
+# tasks file for nextcloud
+- name: include assert.yml
+  include_tasks: assert.yml
+
+- name: install requirements
+  package:
+    name: "{{ nextcloud_requirements }}"
+    state: present
+
+- name: modify selinux settings
+  seboolean:
+    name: "{{ item }}"
+    state: yes
+    persistent: yes
+  when:
+    - ansible_selinux.status is defined
+    - ansible_selinux.status == "enabled"
+  loop: "{{ nextcloud_sebooleans }}"
+
+- name: install nextcloud
+  unarchive:
+    src: "{{ nextcloud_archive }}"
+    dest: "{{ nextcloud_destination }}"
+    remote_src: yes
+    nexter: "{{ nextcloud_httpd_nexter }}"
+    group: "{{ nextcloud_httpd_group }}"
+    creates: "{{ nextcloud_destination }}/nextcloud"
+    mode: "0755"
+  notify:
+    - remove config.php
+
+- name: flush handlers
+  meta: flush_handlers
+
+- name: place nextcloud.conf
+  template:
+    src: nextcloud.conf.j2
+    dest: "{{ nextcloud_config_directory }}/nextcloud.conf"
+    mode: "0644"
+  notify:
+    - restart httpd
+
+- name: configure nextcloud
+  command: "{{ nextcloud_command }}"
+  args:
+    creates: "{{ nextcloud_destination }}/nextcloud/config/config.php"
+    chdir: "{{ nextcloud_destination }}/nextcloud"
+  notify:
+    - set nextcloud trusted domains
+  no_log: yes
+  become: yes
+  become_user: "{{ nextcloud_httpd_nexter }}"
+
+- name: set permissions
+  file:
+    name: "{{ item.name }}"
+    group: "{{ item.group | default(omit) }}"
+    mode: "{{ item.mode | default(omit) }}"
+  loop: "{{ nextcloud_permissions }}"
+  loop_control:
+    label: "{{ item.name }}"

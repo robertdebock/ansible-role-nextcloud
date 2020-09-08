@@ -1,0 +1,18 @@
+---
+# defaults file for nextcloud
+
+# The version of nextcloud to install.
+nextcloud_version: 10.5.0
+
+# The domain under which this server will be available. For example:
+# "localhost" or "nextcloud.example.com". Does not include protocol identifier,
+# (https://) or directories. (/nextcloud)
+nextcloud_domain_url: "{{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}"
+
+# Database connection details.
+nextcloud_database_name: nextcloud
+nextcloud_database_user: nextcloud
+nextcloud_database_pass: N3x4Cl0ud
+nextcloud_database_host: 127.0.0.1
+nextcloud_admin_user: admin
+nextcloud_admin_pass: N3x4Cl0ud

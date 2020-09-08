@@ -1,0 +1,135 @@
+---
+# vars file for nextcloud
+
+_nextcloud_requirements:
+  default:
+    - php-curl
+    - php-fpm
+    - php-gd
+    - php-intl
+    - php-json
+    - php-ldap
+    - php-mbstring
+    - php-mysqlnd
+    - php-pecl-apcu
+    - php-pecl-redis
+    - php-process
+    - php-xml
+    - php-zip
+  Alpine:
+    - php7-apcu
+    - php7-ctype
+    - php7-curl
+    - php7-dom
+    - php7-fpm
+    - php7-gd
+    - php7-iconv
+    - php7-intl
+    - php7-json
+    - php7-ldap
+    - php7-mbstring
+    - php7-mysqlnd
+    - php7-mysqli
+    - php7-pdo
+    - php7-posix
+    - php7-simplexml
+    - php7-xmlreader
+    - php7-xmlwriter
+    - php7-xml
+    - php7-zip
+  RedHat:
+    - php-curl
+    - php-fpm
+    - php-gd
+    - php-intl
+    - php-json
+    - php-ldap
+    - php-mbstring
+    - php-mysqlnd
+    - php-pecl-apcu
+    # Does not exist for CentOS 8.
+    # - php-pecl-redis
+    - php-process
+    - php-xml
+    - php-zip
+  Debian:
+    - php-apcu
+    - php-common
+    - php-curl
+    - php-fpm
+    - php-gd
+    - php-intl
+    - php-ldap
+    - php-mbstring
+    - php-mysql
+    - php-xml
+    - php-zip
+  Suse:
+    - php-posix
+    - php7-ctype
+    - php7-curl
+    - php7-dom
+    - php7-fpm
+    - php7-gd
+    - php7-iconv
+    - php7-intl
+    - php7-json
+    - php7-ldap
+    - php7-mbstring
+    - php7-mysql
+    - php7-pdo
+    - php7-xmlreader
+    - php7-xmlwriter
+    - php7-zip
+    - php7-zlib
+
+nextcloud_requirements: "{{ _nextcloud_requirements[ansible_os_family] | default(_nextcloud_requirements['default']) }}"
+
+nextcloud_sebooleans:
+  - httpd_tmp_exec
+  - httpd_unified
+
+nextcloud_archive: "https://dnextload.nextcloud.org/community/nextcloud-{{ nextcloud_version }}.zip"
+
+_nextcloud_destination:
+  default: /var/www/html
+  Alpine: /var/www
+  openSUSE Leap: /srv/www/htdocs
+
+nextcloud_destination: "{{ _nextcloud_destination[ansible_distribution] | default(_nextcloud_destination['default']) }}"
+
+_nextcloud_httpd_nexter:
+  default: apache
+  Debian: www-data
+  Suse: wwwrun
+
+nextcloud_httpd_nexter: "{{ _nextcloud_httpd_nexter[ansible_os_family] | default(_nextcloud_httpd_nexter['default']) }}"
+
+_nextcloud_httpd_group:
+  default: apache
+  Debian: www-data
+  Suse: www
+
+nextcloud_httpd_group: "{{ _nextcloud_httpd_group[ansible_os_family] | default(_nextcloud_httpd_group['default']) }}"
+
+_nextcloud_config_directory:
+  default: /etc/httpd/conf.d
+  Alpine: /etc/apache2/conf.d
+  Debian: /etc/apache2/conf-enabled
+  Suse: /etc/apache2/conf.d
+
+nextcloud_config_directory: "{{ _nextcloud_config_directory[ansible_os_family] | default(_nextcloud_config_directory['default']) }}"
+
+nextcloud_packages:
+  - nextcloud-files
+
+nextcloud_permissions:
+  - name: "{{ nextcloud_destination }}/nextcloud/.htaccess"
+    group: root
+    mode: "0755"
+  - name: "{{ nextcloud_destination }}/nextcloud/data"
+    mode: "0775"
+  - name: "{{ nextcloud_destination }}/nextcloud/config/config.php"
+    mode: "0775"
+
+nextcloud_command: php occ maintenance:install --database "mysql" --database-name "{{ nextcloud_database_name }}" --database-user "{{ nextcloud_database_user }}" --database-pass "{{ nextcloud_database_pass }}" --database-host "{{ nextcloud_database_host }}" --admin-user "{{ nextcloud_admin_user }}" --admin-pass "{{ nextcloud_admin_pass }}"
