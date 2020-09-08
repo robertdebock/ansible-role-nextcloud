@@ -23,7 +23,7 @@
     src: "{{ nextcloud_archive }}"
     dest: "{{ nextcloud_destination }}"
     remote_src: yes
-    nexter: "{{ nextcloud_httpd_nexter }}"
+    ownter: "{{ nextcloud_httpd_owner }}"
     group: "{{ nextcloud_httpd_group }}"
     creates: "{{ nextcloud_destination }}/nextcloud"
     mode: "0755"
@@ -50,7 +50,7 @@
     - set nextcloud trusted domains
   no_log: yes
   become: yes
-  become_user: "{{ nextcloud_httpd_nexter }}"
+  become_user: "{{ nextcloud_httpd_owner }}"
 
 - name: set permissions
   file:
