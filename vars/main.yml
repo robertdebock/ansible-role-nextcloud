@@ -10,8 +10,10 @@ _nextcloud_requirements:
     - php-mysqlnd
     - php-pecl-apcu
     - php-pecl-redis
+    - php-process
     - php-zip
   Alpine:
+    - php-process
     - php7-gd
     - php7-intl
     - php7-json
@@ -20,22 +22,25 @@ _nextcloud_requirements:
     - php7-zip
   RedHat:
     - php-gd
-    - php-mbstring
+    - php-imagick
     - php-intl
-    - php-pecl-apcu
+    - php-json
+    - php-mbstring
     - php-mysqlnd
     - php-opcache
-    - php-json
-    - php-zip
+    - php-pecl-apcu
+    - php-process
     - php-redis
-    - php-imagick
+    - php-zip
   Debian:
     - php-gd
     - php-intl
     - php-mbstring
     - php-mysql
+    - php-process
     - php-zip
   Suse:
+    - php-process
     - php7-gd
     - php7-intl
     - php7-json
@@ -47,6 +52,7 @@ nextcloud_requirements: "{{ _nextcloud_requirements[ansible_os_family] | default
 
 nextcloud_sebooleans:
   - httpd_can_network_connect
+  - httpd_unified
 
 _nextcloud_httpd_owner:
   default: apache
@@ -83,12 +89,9 @@ nextcloud_packages:
   - nextcloud-files
 
 nextcloud_permissions:
-  - name: "{{ nextcloud_destination }}/nextcloud/.htaccess"
-    group: root
-    mode: "0755"
-  - name: "{{ nextcloud_destination }}/nextcloud/data"
-    mode: "0775"
-  - name: "{{ nextcloud_destination }}/nextcloud/config/config.php"
-    mode: "0775"
-
-nextcloud_command: php occ maintenance:install --database "mysql" --database-name "{{ nextcloud_database_name }}" --database-user "{{ nextcloud_database_user }}" --database-pass "{{ nextcloud_database_pass }}" --database-host "{{ nextcloud_database_host }}" --admin-user "{{ nextcloud_admin_user }}" --admin-pass "{{ nextcloud_admin_pass }}"
+  - name: "{{ nextcloud_destination }}/nextcloud/config/config.php
+    mode: "0660"
+  - name: "{{ nextcloud_destination }}/nextcloud/apps
+    mode: "0770"
+  - name: "{{ nextcloud_destination }}/nextcloud/data
+    mode: "0770"
