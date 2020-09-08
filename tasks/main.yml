@@ -23,7 +23,7 @@
     src: "{{ nextcloud_archive }}"
     dest: "{{ nextcloud_destination }}"
     remote_src: yes
-    ownter: "{{ nextcloud_httpd_owner }}"
+    owner: "{{ nextcloud_httpd_owner }}"
     group: "{{ nextcloud_httpd_group }}"
     creates: "{{ nextcloud_destination }}/nextcloud"
     mode: "0755"
