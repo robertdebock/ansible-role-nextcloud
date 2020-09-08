@@ -41,9 +41,9 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
           common_name: "{{ ansible_fqdn }}"
     - role: robertdebock.httpd
     - role: robertdebock.redis
-    # - role: robertdebock.remi
-    #   remi_enabled_repositories:
-    #     - php74
+    - role: robertdebock.remi
+      remi_enabled_repositories:
+        - php74
     - role: robertdebock.php
     - role: robertdebock.php_fpm
     - role: robertdebock.mysql
@@ -116,7 +116,7 @@ The following roles can be installed to ensure all requirements are met, using `
 - robertdebock.php_fpm
 - robertdebock.python_pip
 - robertdebock.redis
-# - robertdebock.remi
+- robertdebock.remi
 
 ```
 
