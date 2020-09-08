@@ -48,7 +48,7 @@ nextcloud_requirements: "{{ _nextcloud_requirements[ansible_os_family] | default
 nextcloud_sebooleans:
   - httpd_can_network_connect
 
-nextcloud_archive: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip
+nextcloud_archive: "https://download.nextcloud.com/server/releases/nextcloud-{{ nextcloud_version }}.zip"
 
 _nextcloud_destination:
   default: /var/www/html
