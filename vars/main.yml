@@ -37,7 +37,7 @@ _nextcloud_requirements:
     - php-intl
     - php-mbstring
     - php-mysql
-    - php-process
+    - php-posix
     - php-zip
   Suse:
     - php-process
