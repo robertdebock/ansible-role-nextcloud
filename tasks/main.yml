@@ -41,14 +41,6 @@
   notify:
     - restart httpd
 
-- name: create data directory
-  file:
-    path: "{{ nextcloud_destination }}"
-    state: directory
-    mode: "0755"
-    owner: "{{ nextcloud_httpd_owner }}"
-    group: "{{ nextcloud_httpd_group }}"
-
 - name: configure nextcloud
   command: "{{ nextcloud_command }}"
   args:
@@ -56,13 +48,15 @@
     chdir: "{{ nextcloud_destination }}/nextcloud"
   notify:
     - set nextcloud trusted domains
-  # no_log: yes
+  no_log: yes
   become: yes
   become_user: "{{ nextcloud_httpd_owner }}"
 
 - name: set permissions
   file:
     name: "{{ item.name }}"
+    state: "{{ item.state | default(omit) }}"
+    owner: "{{ item.owner | default(omit) }}"
     group: "{{ item.group | default(omit) }}"
     mode: "{{ item.mode | default(omit) }}"
   loop: "{{ nextcloud_permissions }}"
