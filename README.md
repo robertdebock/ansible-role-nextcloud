@@ -136,7 +136,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |alpine|all|
 |debian|all|
 |el|7, 8|
-|fedora|all|
+|fedora|32|
 |opensuse|all|
 |ubuntu|all|
 
