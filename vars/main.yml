@@ -95,3 +95,5 @@ nextcloud_permissions:
     mode: "0770"
   - name: "{{ nextcloud_destination }}/nextcloud/data"
     mode: "0770"
+
+nextcloud_command: php occ maintenance:install --database "mysql" --database-name "{{ nextcloud_database_name }}" --database-user "{{ nextcloud_database_user }}" --database-pass "{{ nextcloud_database_pass }}" --database-host "{{ nextcloud_database_host }}" --admin-user "{{ nextcloud_admin_user }}" --admin-pass "{{ nextcloud_admin_pass }}"
