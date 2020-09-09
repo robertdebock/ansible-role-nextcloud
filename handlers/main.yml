@@ -11,3 +11,14 @@
   file:
     path: "{{ nextcloud_destination }}/nextcloud/config/config.php"
     state: absent
+
+- name: set permissions
+  file:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default(omit) }}"
+    owner: "{{ item.owner | default(omit) }}"
+    group: "{{ item.group | default(omit) }}"
+    mode: "{{ item.mode | default(omit) }}"
+  loop: "{{ nextcloud_permissions }}"
+  loop_control:
+    label: "{{ item.name }}"
