@@ -33,6 +33,7 @@ _nextcloud_requirements:
     - php-redis
     - php-zip
   Debian:
+    - php-curl
     - php-dom
     - php-gd
     - php-intl
