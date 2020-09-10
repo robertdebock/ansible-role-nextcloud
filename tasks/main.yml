@@ -49,6 +49,6 @@
     chdir: "{{ nextcloud_destination }}/nextcloud"
   notify:
     - set nextcloud trusted domains
-  no_log: yes
+  # no_log: yes
   become: yes
   become_user: "{{ nextcloud_httpd_owner }}"
