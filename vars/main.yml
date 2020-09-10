@@ -33,6 +33,7 @@ _nextcloud_requirements:
     - php-redis
     - php-zip
   Debian:
+    - php-dom
     - php-gd
     - php-intl
     - php-mbstring
@@ -40,7 +41,7 @@ _nextcloud_requirements:
     - php-posix
     - php-zip
   Suse:
-    - php-process
+    - php7-posix
     - php7-gd
     - php7-intl
     - php7-json
