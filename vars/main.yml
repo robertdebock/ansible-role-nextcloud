@@ -89,8 +89,6 @@ nextcloud_packages:
   - nextcloud-files
 
 nextcloud_permissions:
-  - name: "{{ nextcloud_destination }}/nextcloud/config/config.php"
-    mode: "0660"
   - name: "{{ nextcloud_destination }}/nextcloud/apps"
     mode: "0770"
   - name: "{{ nextcloud_destination }}/nextcloud/data"
