@@ -5,4 +5,5 @@
   gather_facts: yes
 
   roles:
+    - role: robertdebock.httpd
     - role: ansible-role-nextcloud
