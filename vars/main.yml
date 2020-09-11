@@ -21,16 +21,21 @@ _nextcloud_requirements:
     - php7-mysqlnd
     - php7-zip
   RedHat:
+    - php-dom
     - php-gd
     - php-imagick
     - php-intl
     - php-json
+    - php-libxml
     - php-mbstring
     - php-mysqlnd
     - php-opcache
     - php-pecl-apcu
     - php-process
     - php-redis
+    - php-simplexml
+    - php-xmlwriter
+    - php-xmlreader
     - php-zip
   Debian:
     - php-curl
