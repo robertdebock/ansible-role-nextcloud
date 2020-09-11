@@ -39,8 +39,6 @@
     src: nextcloud.conf.j2
     dest: "{{ nextcloud_config_directory }}/nextcloud.conf"
     mode: "0644"
-  notify:
-    - restart httpd
 
 - name: configure nextcloud
   command: "{{ nextcloud_command }}"
