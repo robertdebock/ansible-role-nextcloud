@@ -34,8 +34,8 @@ _nextcloud_requirements:
     - php-process
     - php-redis
     - php-simplexml
-    - php-xmlwriter
     - php-xmlreader
+    - php-xmlwriter
     - php-zip
   Debian:
     - php-curl
@@ -47,13 +47,20 @@ _nextcloud_requirements:
     - php-posix
     - php-zip
   Suse:
-    - php7-posix
+    - php7-curl
+    - php7-dom
     - php7-gd
     - php7-intl
     - php7-json
     - php7-mbstring
     - php7-mysql
+    - php7-openssl
+    - php7-pcntl
+    - php7-posix
+    - php7-xmlreader
+    - php7-xmlwriter
     - php7-zip
+    - php7-zlib
 
 nextcloud_requirements: "{{ _nextcloud_requirements[ansible_os_family] | default(_nextcloud_requirements['default']) }}"
 
