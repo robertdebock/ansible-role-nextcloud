@@ -5,3 +5,4 @@
 repository:
   description: Install and configure Nextcloud on your system.
   homepage: https://robertdebock.nl/
+  topics: nextcloud, centos, redhat, hacktoberfest
