@@ -3,54 +3,46 @@
   assert:
     that:
       - nextcloud_version is defined
-      - nextcloud_version | length > 0
     quiet: yes
 
 - name: test if nextcloud_domain_url is set correctly
   assert:
     that:
       - nextcloud_domain_url is defined
-      - nextcloud_domain_url | length > 0
     quiet: yes
 
 - name: test if nextcloud_database_name is set correctly
   assert:
     that:
       - nextcloud_database_name is defined
-      - nextcloud_database_name | length > 0
     quiet: yes
 
 - name: test if nextcloud_database_user is set correctly
   assert:
     that:
       - nextcloud_database_user is defined
-      - nextcloud_database_user | length > 0
     quiet: yes
 
 - name: test if nextcloud_database_pass is set correctly
   assert:
     that:
       - nextcloud_database_pass is defined
-      - nextcloud_database_pass | length > 0
     quiet: yes
 
 - name: test if nextcloud_database_host is set correctly
   assert:
     that:
       - nextcloud_database_host is defined
-      - nextcloud_database_host | length > 0
     quiet: yes
 
 - name: test if nextcloud_admin_user is set correctly
   assert:
     that:
       - nextcloud_admin_user is defined
-      - nextcloud_admin_user | length > 0
     quiet: yes
 
 - name: test if nextcloud_admin_pass is set correctly
   assert:
     that:
       - nextcloud_admin_pass is defined
-      - nextcloud_admin_pass | length > 0
     quiet: yes
