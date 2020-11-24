@@ -1,5 +1,6 @@
 ---
 # handlers file for nextcloud
+
 - name: set nextcloud trusted domains
   lineinfile:
     path: "{{ nextcloud_destination }}/nextcloud/config/config.php"
