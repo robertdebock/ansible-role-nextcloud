@@ -120,7 +120,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |---------|----|
 |debian|all|
 |el|7, 8|
-|fedora|all|
+|fedora|33|
 |opensuse|all|
 |ubuntu|focal, bionic|
 
@@ -130,6 +130,14 @@ The minimum version of Ansible required is 2.9, tests have been done to:
 - The current version.
 - The development version.
 
+## [Exceptions](#exceptions)
+
+Some variarations of the build matrix do not work. These are the variations and reasons why the build won't work:
+
+| variation                 | reason                 |
+|---------------------------|------------------------|
+| fedora:32 | nothing provides libzip(x86-64) >= 1.7.3 needed by php-pecl-zip-1.19.1-1.fc32.remi.7.4.x86_64 |
+| fedora:rawhide | dependent role "remi" does not support fedora:rawhide. |
 
 
 ## [Testing](#testing)
