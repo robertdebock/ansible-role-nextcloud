@@ -1,4 +1,5 @@
 ---
+
 - name: test if nextcloud_version is set correctly
   assert:
     that:
