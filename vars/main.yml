@@ -99,9 +99,6 @@ _nextcloud_config_directory:
 
 nextcloud_config_directory: "{{ _nextcloud_config_directory[ansible_os_family] | default(_nextcloud_config_directory['default']) }}"
 
-nextcloud_packages:
-  - nextcloud-files
-
 nextcloud_permissions:
   - name: "{{ nextcloud_destination }}/nextcloud/apps"
     mode: "0770"
