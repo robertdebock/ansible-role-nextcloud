@@ -119,7 +119,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|debian|all|
+|debian|buster|
 |el|7, 8|
 |fedora|33|
 |opensuse|all|
@@ -139,6 +139,7 @@ Some variarations of the build matrix do not work. These are the variations and 
 |---------------------------|------------------------|
 | fedora:32 | nothing provides libzip(x86-64) >= 1.7.3 needed by php-pecl-zip-1.19.1-1.fc32.remi.7.4.x86_64 |
 | fedora:rawhide | dependent role "remi" does not support fedora:rawhide. |
+| debian:bullseye | Package 'php-dom' (and 'php-posix') has no installation candidate |
 
 
 If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-nextcloud/issues)
