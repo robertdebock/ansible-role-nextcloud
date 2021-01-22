@@ -55,3 +55,23 @@
       - nextcloud_admin_pass is defined
       - nextcloud_admin_pass is string
     quiet: yes
+
+- name: test if nextcloud_apps is set correctly
+  assert:
+    that:
+      - nextcloud_apps is iterable
+    quiet: yes
+  when:
+    - nextcloud_apps is defined
+
+- name: test if item in nextcloud_apps is set correctly
+  assert:
+    that:
+      - item.name is defined
+      - item.name is string
+    quiet: yes
+  loop: "{{ nextcloud_apps }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - nextcloud_apps is defined

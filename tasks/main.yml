@@ -52,6 +52,19 @@
     chdir: "{{ nextcloud_destination }}/nextcloud"
   notify:
     - set nextcloud trusted domains
-  # no_log: yes
+  no_log: yes
   become: yes
   become_user: "{{ nextcloud_httpd_owner }}"
+
+- name: install app
+  command: php occ app:install {{ item.name }}
+  args:
+    chdir: "{{ nextcloud_destination }}/nextcloud"
+    creates: "{{ nextcloud_destination }}/nextcloud/apps/{{ item.name }}"
+  become: yes
+  become_user: "{{ nextcloud_httpd_owner }}"
+  loop: "{{ nextcloud_apps }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - nextcloud_apps is defined

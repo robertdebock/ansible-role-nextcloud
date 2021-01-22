@@ -16,3 +16,7 @@ nextcloud_database_pass: N3x4Cl0ud
 nextcloud_database_host: 127.0.0.1
 nextcloud_admin_user: admin
 nextcloud_admin_pass: N3x4Cl0ud
+
+# You can install applications into NextCloud.
+# nextcloud_apps:
+#   - name: richdocumentscode

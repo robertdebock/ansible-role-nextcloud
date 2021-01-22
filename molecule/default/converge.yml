@@ -7,3 +7,5 @@
   roles:
     - role: robertdebock.httpd
     - role: ansible-role-nextcloud
+      nextcloud_apps:
+        - name: richdocumentscode
