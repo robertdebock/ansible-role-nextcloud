@@ -20,6 +20,7 @@
       remi_enabled_repositories:
         - php74
     - role: robertdebock.php
+      php_memory_limit: 512M
     - role: robertdebock.php_fpm
     - role: robertdebock.mysql
       mysql_databases:
