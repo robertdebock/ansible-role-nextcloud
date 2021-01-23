@@ -11,6 +11,14 @@
     name: "{{ nextcloud_requirements }}"
     state: present
 
+- name: place apache configuration
+  template:
+    src: nextcloud.conf.j2
+    dest: "{{ nextcloud_config_directory }}/nextcloud.conf"
+    mode: "0644"
+  notify:
+    - restart httpd
+
 - name: modify selinux settings
   seboolean:
     name: "{{ item }}"
@@ -29,34 +37,29 @@
     owner: "{{ nextcloud_httpd_owner }}"
     group: "{{ nextcloud_httpd_group }}"
     creates: "{{ nextcloud_destination }}/nextcloud"
-    mode: "0755"
-  notify:
-    - remove config.php
-    - set permissions
-
-- name: flush handlers
-  meta: flush_handlers
-
-- name: place nextcloud.conf
-  template:
-    src: nextcloud.conf.j2
-    dest: "{{ nextcloud_config_directory }}/nextcloud.conf"
-    mode: "0644"
-  notify:
-    - restart httpd
+    mode: "0775"
 
 - name: configure nextcloud
   command: "{{ nextcloud_command }}"
   args:
-    creates: "{{ nextcloud_destination }}/nextcloud/config/config.php"
+    creates: "{{ nextcloud_destination }}/nextcloud/data/index.html"
     chdir: "{{ nextcloud_destination }}/nextcloud"
-  notify:
-    - set nextcloud trusted domains
   no_log: yes
   become: yes
   become_user: "{{ nextcloud_httpd_owner }}"
 
-- name: install app
+- name: set permissions
+  file:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default(omit) }}"
+    owner: "{{ item.owner | default(omit) }}"
+    group: "{{ item.group | default(omit) }}"
+    mode: "{{ item.mode | default(omit) }}"
+  loop: "{{ nextcloud_permissions }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: install nextcloud app
   command: php occ app:install {{ item.name }}
   args:
     chdir: "{{ nextcloud_destination }}/nextcloud"
@@ -68,3 +71,10 @@
     label: "{{ item.name }}"
   when:
     - nextcloud_apps is defined
+
+- name: set nextcloud trusted domains
+  lineinfile:
+    path: "{{ nextcloud_destination }}/nextcloud/config/config.php"
+    regexp: "    0 => '"
+    line: "    0 => '{{ nextcloud_domain_url }}'"
+    mode: "0775"
