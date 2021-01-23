@@ -19,6 +19,8 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
   roles:
     - role: robertdebock.httpd
     - role: robertdebock.nextcloud
+      nextcloud_apps:
+        - name: richdocumentscode
 ```
 
 The machine needs to be prepared in CI this is done using `molecule/resources/prepare.yml`:
@@ -45,6 +47,9 @@ The machine needs to be prepared in CI this is done using `molecule/resources/pr
       remi_enabled_repositories:
         - php74
     - role: robertdebock.php
+      php_memory_limit: 512M
+      php_upload_max_filesize: 8G
+      php_post_max_size: 8G
     - role: robertdebock.php_fpm
     - role: robertdebock.mysql
       mysql_databases:
@@ -81,6 +86,10 @@ nextcloud_database_pass: N3x4Cl0ud
 nextcloud_database_host: 127.0.0.1
 nextcloud_admin_user: admin
 nextcloud_admin_pass: N3x4Cl0ud
+
+# You can install applications into NextCloud.
+# nextcloud_apps:
+#   - name: richdocumentscode
 ```
 
 ## [Requirements](#requirements)
