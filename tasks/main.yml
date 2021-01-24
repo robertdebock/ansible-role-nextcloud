@@ -78,3 +78,11 @@
     regexp: "    0 => '"
     line: "    0 => '{{ nextcloud_domain_url }}'"
     mode: "0775"
+
+- name: include parameters
+  include_tasks: parameters.yml
+  loop: "{{ nextcloud_settings }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - nextcloud_settings is defined

@@ -75,3 +75,26 @@
     label: "{{ item.name }}"
   when:
     - nextcloud_apps is defined
+
+- name: test if nextcloud_settings is set correctly
+  assert:
+    that:
+      - nextcloud_settings is iterable
+    quiet: yes
+  when:
+    - nextcloud_settings is defined
+
+- name: test if item in nextcloud_settings is set correctly
+  assert:
+    that:
+      - item.name is defined
+      - item.name is string
+      - item.section is defined
+      - item.section is string
+      - item.value is defined
+    quiet: yes
+  loop: "{{ nextcloud_settings }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - nextcloud_settings is defined

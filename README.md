@@ -21,6 +21,10 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
     - role: robertdebock.nextcloud
       nextcloud_apps:
         - name: richdocumentscode
+      nextcloud_settings:
+        - name: max_chunk_size
+          section: files
+          value: 0
 ```
 
 The machine needs to be prepared in CI this is done using `molecule/resources/prepare.yml`:
@@ -90,6 +94,12 @@ nextcloud_admin_pass: N3x4Cl0ud
 # You can install applications into NextCloud.
 # nextcloud_apps:
 #   - name: richdocumentscode
+
+# You can set parameters for nextcloud
+# nextcloud_settings:
+#   - name: max_chunk_size
+#     section: files
+#     value: 0
 ```
 
 ## [Requirements](#requirements)

@@ -9,3 +9,7 @@
     - role: ansible-role-nextcloud
       nextcloud_apps:
         - name: richdocumentscode
+      nextcloud_settings:
+        - name: max_chunk_size
+          section: files
+          value: 0

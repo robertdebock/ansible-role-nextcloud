@@ -20,3 +20,9 @@ nextcloud_admin_pass: N3x4Cl0ud
 # You can install applications into NextCloud.
 # nextcloud_apps:
 #   - name: richdocumentscode
+
+# You can set parameters for nextcloud
+# nextcloud_settings:
+#   - name: max_chunk_size
+#     section: files
+#     value: 0
