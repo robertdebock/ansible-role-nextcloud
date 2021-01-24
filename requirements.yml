@@ -12,3 +12,4 @@ roles:
   - name: robertdebock.python_pip
   - name: robertdebock.redis
   - name: robertdebock.remi
+  - name: robertdebock.selinux

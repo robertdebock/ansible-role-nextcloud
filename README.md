@@ -45,6 +45,7 @@ The machine needs to be prepared in CI this is done using `molecule/resources/pr
       openssl_items:
         - name: apache-httpd
           common_name: "{{ ansible_fqdn }}"
+    - role: robertdebock.selinux
     - role: robertdebock.httpd
     - role: robertdebock.redis
     - role: robertdebock.remi
@@ -124,6 +125,7 @@ The following roles are used to prepare a system. You may choose to prepare your
 | [robertdebock.python_pip](https://galaxy.ansible.com/robertdebock/python_pip) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-python_pip/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-python_pip/actions) | [![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-ansible-role-python_pip/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-python_pip)
 | [robertdebock.redis](https://galaxy.ansible.com/robertdebock/redis) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-redis/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-redis/actions) | [![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-ansible-role-redis/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-redis)
 | [robertdebock.remi](https://galaxy.ansible.com/robertdebock/remi) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-remi/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-remi/actions) | [![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-ansible-role-remi/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-remi)
+| [robertdebock.selinux](https://galaxy.ansible.com/robertdebock/selinux) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-selinux/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-selinux/actions) | [![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-ansible-role-selinux/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-selinux)
 
 ## [Context](#context)
 
