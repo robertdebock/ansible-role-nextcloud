@@ -54,17 +54,7 @@
     - set redis host
     - set redis port
     - set trusted domains
-
-- name: set permissions
-  file:
-    name: "{{ item.name }}"
-    state: "{{ item.state | default(omit) }}"
-    owner: "{{ item.owner | default(omit) }}"
-    group: "{{ item.group | default(omit) }}"
-    mode: "{{ item.mode | default(omit) }}"
-  loop: "{{ nextcloud_permissions }}"
-  loop_control:
-    label: "{{ item.name }}"
+    - set permissions
 
 - name: install nextcloud app
   command: php occ app:install {{ item.name }}
@@ -78,6 +68,8 @@
     label: "{{ item.name }}"
   when:
     - nextcloud_apps is defined
+  notify:
+    - set permissions
 
 - name: include parameters
   include_tasks: parameters.yml

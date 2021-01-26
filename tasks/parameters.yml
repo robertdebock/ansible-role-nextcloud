@@ -19,3 +19,5 @@
         chdir: "{{ nextcloud_destination }}/nextcloud"
       become: yes
       become_user: "{{ nextcloud_httpd_owner }}"
+      notify:
+        - set permissions
