@@ -49,6 +49,11 @@
   no_log: yes
   become: yes
   become_user: "{{ nextcloud_httpd_owner }}"
+  notify:
+    - set memcache.distributed
+    - set redis host
+    - set redis port
+    - set trusted domains
 
 - name: set permissions
   file:
@@ -73,24 +78,6 @@
     label: "{{ item.name }}"
   when:
     - nextcloud_apps is defined
-
-- name: set nextcloud trusted domains
-  lineinfile:
-    path: "{{ nextcloud_destination }}/nextcloud/config/config.php"
-    regexp: "    0 => '"
-    line: "    0 => '{{ nextcloud_domain_url }}'"
-    mode: "0775"
-
-- name: set redis cache configuration
-  lineinfile:
-    path: "{{ nextcloud_destination }}/nextcloud/config/config.php"
-    line: "{{ item }}"
-    mode: "0775"
-  loop:
-    - "'memcache.distributed' => '\\OC\\Memcache\\Redis',"
-    - "'filelocking.enabled' => true,"
-    - "'memcache.locking' => '\\OC\\Memcache\\Redis',"
-    - "'redis' => [ 'host' => 'localhost', 'port' => 6379, ],"
 
 - name: include parameters
   include_tasks: parameters.yml

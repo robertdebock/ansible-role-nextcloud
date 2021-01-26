@@ -1,2 +1,30 @@
 ---
 # handlers file for nextcloud
+
+- name: set memcache.distributed
+  command: php occ config:system:set memcache.distributed --value="\OC\Memcache\Redis"
+  args:
+    chdir: "{{ nextcloud_destination }}/nextcloud"
+  become: yes
+  become_user: "{{ nextcloud_httpd_owner }}"
+
+- name: set redis host
+  command: php occ config:system:set redis host --value="localhost"
+  args:
+    chdir: "{{ nextcloud_destination }}/nextcloud"
+  become: yes
+  become_user: "{{ nextcloud_httpd_owner }}"
+
+- name: set redis port
+  command: php occ config:system:set redis port --value="6379"
+  args:
+    chdir: "{{ nextcloud_destination }}/nextcloud"
+  become: yes
+  become_user: "{{ nextcloud_httpd_owner }}"
+
+- name: set trusted domains
+  command: php occ config:system:set trusted_domains 1 --value={{ nextcloud_domain_url }}
+  args:
+    chdir: "{{ nextcloud_destination }}/nextcloud"
+  become: yes
+  become_user: "{{ nextcloud_httpd_owner }}"
