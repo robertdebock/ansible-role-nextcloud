@@ -77,7 +77,7 @@ These variables are set in `defaults/main.yml`:
 # defaults file for nextcloud
 
 # The version of nextcloud to install.
-nextcloud_version: 20.0.6
+nextcloud_version: 20.0.7
 
 # The domain under which this server will be available. For example:
 # "localhost" or "nextcloud.example.com". Does not include protocol identifier,
