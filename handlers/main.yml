@@ -39,3 +39,10 @@
   loop: "{{ nextcloud_permissions }}"
   loop_control:
     label: "{{ item.name }}"
+
+- name: add missing indices
+  command: php occ db:add-missing-indices
+  args:
+    chdir: "{{ nextcloud_destination }}/nextcloud"
+  become: yes
+  become_user: "{{ nextcloud_httpd_owner }}"

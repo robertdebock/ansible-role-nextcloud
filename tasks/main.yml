@@ -55,6 +55,7 @@
     - set redis port
     - set trusted domains
     - set permissions
+    - add missing indices
 
 - name: install nextcloud app
   command: php occ app:install {{ item.name }}
