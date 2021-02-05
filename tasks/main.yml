@@ -38,7 +38,7 @@
     remote_src: yes
     owner: "{{ nextcloud_httpd_owner }}"
     group: "{{ nextcloud_httpd_group }}"
-    creates: "{{ nextcloud_destination }}/nextcloud"
+    creates: "{{ nextcloud_destination }}/nextcloud/occ"
     mode: "0775"
 
 - name: configure nextcloud
