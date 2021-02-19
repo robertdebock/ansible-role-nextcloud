@@ -31,7 +31,7 @@
 
 - name: set permissions
   ansible.builtin.file:
-    name: "{{ item.name }}"
+    path: "{{ item.name }}"
     state: "{{ item.state | default(omit) }}"
     owner: "{{ item.owner | default(omit) }}"
     ansible.builtin.group: "{{ item.group | default(omit) }}"
