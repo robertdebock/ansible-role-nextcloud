@@ -31,14 +31,14 @@
 
 - name: set permissions
   ansible.builtin.file:
-    path: "{{ item.name }}"
+    path: "{{ item.path }}"
     state: "{{ item.state | default(omit) }}"
     owner: "{{ item.owner | default(omit) }}"
     ansible.builtin.group: "{{ item.group | default(omit) }}"
     mode: "{{ item.mode | default(omit) }}"
   loop: "{{ nextcloud_permissions }}"
   loop_control:
-    label: "{{ item.name }}"
+    label: "{{ item.path }}"
 
 - name: add missing indices
   command: php occ db:add-missing-indices

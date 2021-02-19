@@ -104,19 +104,19 @@ _nextcloud_config_directory:
 nextcloud_config_directory: "{{ _nextcloud_config_directory[ansible_os_family] | default(_nextcloud_config_directory['default']) }}"
 
 nextcloud_permissions:
-  - name: "{{ nextcloud_destination }}/nextcloud/apps"
+  - path: "{{ nextcloud_destination }}/nextcloud/apps"
     mode: "0770"
-  - name: "{{ nextcloud_destination }}/nextcloud/data"
+  - path: "{{ nextcloud_destination }}/nextcloud/data"
     owner: "{{ nextcloud_httpd_owner }}"
     group: "{{ nextcloud_httpd_group }}"
     mode: "0770"
     state: directory
-  - name: "{{ nextcloud_destination }}/nextcloud/config"
+  - path: "{{ nextcloud_destination }}/nextcloud/config"
     owner: "{{ nextcloud_httpd_owner }}"
     group: "{{ nextcloud_httpd_group }}"
     mode: "0770"
     state: directory
-  - name: "{{ nextcloud_destination }}/nextcloud/config/config.php"
+  - path: "{{ nextcloud_destination }}/nextcloud/config/config.php"
     owner: "{{ nextcloud_httpd_owner }}"
     group: "{{ nextcloud_httpd_group }}"
     mode: "0660"
