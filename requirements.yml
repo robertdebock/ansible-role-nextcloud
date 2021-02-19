@@ -15,4 +15,3 @@ roles:
   - name: robertdebock.selinux
 collections:
   - name: ansible.posix
-  - name: ansible.builtin
