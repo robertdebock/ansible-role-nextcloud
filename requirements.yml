@@ -13,3 +13,5 @@ roles:
   - name: robertdebock.redis
   - name: robertdebock.remi
   - name: robertdebock.selinux
+collections:
+  - name: ansible.posix

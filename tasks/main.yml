@@ -7,14 +7,14 @@
   delegate_to: localhost
 
 - name: install requirements
-  package:
+  ansible.builtin.package:
     name: "{{ nextcloud_requirements }}"
     state: present
   notify:
     - restart httpd
 
 - name: place apache configuration
-  template:
+  ansible.builtin.template:
     src: nextcloud.conf.j2
     dest: "{{ nextcloud_config_directory }}/nextcloud.conf"
     mode: "0644"
@@ -22,7 +22,7 @@
     - restart httpd
 
 - name: modify selinux settings
-  seboolean:
+  ansible.posix.seboolean:
     name: "{{ item }}"
     state: yes
     persistent: yes
@@ -32,7 +32,7 @@
   loop: "{{ nextcloud_sebooleans }}"
 
 - name: install nextcloud
-  unarchive:
+  ansible.builtin.unarchive:
     src: "{{ nextcloud_archive }}"
     dest: "{{ nextcloud_destination }}"
     remote_src: yes
@@ -73,7 +73,7 @@
     - set permissions
 
 - name: include parameters
-  include_tasks: parameters.yml
+  ansible.builtin.include_tasks: parameters.yml
   loop: "{{ nextcloud_settings }}"
   loop_control:
     label: "{{ item.name }}"
