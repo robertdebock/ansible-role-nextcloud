@@ -42,7 +42,7 @@
     mode: "0775"
 
 - name: configure nextcloud
-  command: "{{ nextcloud_command }}"
+  ansible.builtin.command: "{{ nextcloud_command }}"
   args:
     creates: "{{ nextcloud_destination }}/nextcloud/data/index.html"
     chdir: "{{ nextcloud_destination }}/nextcloud"
@@ -58,7 +58,7 @@
     - add missing indices
 
 - name: install nextcloud app
-  command: php occ app:install {{ item.name }}
+  ansible.builtin.command: php occ app:install {{ item.name }}
   args:
     chdir: "{{ nextcloud_destination }}/nextcloud"
     creates: "{{ nextcloud_destination }}/nextcloud/apps/{{ item.name }}"
