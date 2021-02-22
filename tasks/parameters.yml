@@ -3,7 +3,7 @@
 - name: set value
   block:
     - name: list value
-      command: php occ config:app:get {{ item.section }} {{ item.name }} --output yaml
+      ansible.builtin.command: php occ config:app:get {{ item.section }} {{ item.name }} --output yaml
       args:
         chdir: "{{ nextcloud_destination }}/nextcloud"
       register: nextcloud_list_value
@@ -14,7 +14,7 @@
         - nextcloud_list_value.stdout | from_yaml != item.value
   rescue:
     - name: set nextcloud parameter
-      command: php occ config:app:set {{ item.section }} {{ item.name }} --value {{ item.value }}
+      ansible.builtin.command: php occ config:app:set {{ item.section }} {{ item.name }} --value {{ item.value }}
       args:
         chdir: "{{ nextcloud_destination }}/nextcloud"
       become: yes
