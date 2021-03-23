@@ -7,6 +7,7 @@
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.core_dependencies
+    - role: robertdebock.cron
     - role: robertdebock.buildtools
     - role: robertdebock.epel
     - role: robertdebock.python_pip
