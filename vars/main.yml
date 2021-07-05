@@ -33,7 +33,7 @@ _nextcloud_requirements:
     - php-posix
     - php-redis
     - php-zip
-  RedHat: &RHEL
+  RedHat: &redhat_requirements
     - php-dom
     - php-gd
     - php-imagick
@@ -50,7 +50,7 @@ _nextcloud_requirements:
     - php-xmlreader
     - php-xmlwriter
     - php-zip
-  Rocky: *RHEL
+  Rocky: *redhat_requirements
   Suse:
     - php7-curl
     - php7-dom
