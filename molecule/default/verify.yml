@@ -19,8 +19,7 @@
 
     - name: get status.php
       ansible.builtin.uri:
-        url: "https://{{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}/nextcloud/status.php"
-        validate_certs: no
+        url: "http://{{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}/nextcloud/status.php"
       register: nextcloud_get_status_php
       until:
         - nextcloud_get_status_php is succeeded
