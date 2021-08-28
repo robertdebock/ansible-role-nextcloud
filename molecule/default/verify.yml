@@ -5,8 +5,8 @@
   gather_facts: yes
 
   vars_files:
-    ../../vars/main.yml
-    ../../defaults/main.yml
+    - ../../vars/main.yml
+    - ../../defaults/main.yml
 
   tasks:
     - name: occ check
