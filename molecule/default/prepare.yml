@@ -18,9 +18,23 @@
     - role: robertdebock.selinux
     - role: robertdebock.httpd
     - role: robertdebock.redis
-    - role: robertdebock.remi
-      remi_enabled_repositories:
-        - php74
+
+- name: continue prepare with facts
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  pre_tasks:
+    - name: include remi
+      include_role:
+        name: robertdebock.remi
+      when:
+        - ansible_distribution != "Fedora"
+      vars:
+        remi_enabled_repositories:
+          - php74
+
+  roles:
     - role: robertdebock.php
       php_memory_limit: 512M
       php_upload_max_filesize: 8G
