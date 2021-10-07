@@ -26,7 +26,7 @@
 
   pre_tasks:
     - name: include remi
-      include_role:
+      ansible.builtin.include_role:
         name: robertdebock.remi
       when:
         - ansible_distribution != "Fedora"
