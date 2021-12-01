@@ -1,5 +1,5 @@
 ---
-image: robertdebock/github-action-molecule:3.0.6
+image: "robertdebock/github-action-molecule:3.3.1"
 
 services:
   - docker:dind
@@ -18,10 +18,14 @@ molecule:
     matrix:
       - image: "debian"
         tag: "latest"
-      - image: "rockylinux"
+      - image: "enterpriselinux"
         tag: "latest"
       - image: "fedora"
-        tag: "33"
+        tag: "34"
+      - image: "fedora"
+        tag: "latest"
+      - image: "fedora"
+        tag: "rawhide"
       - image: "opensuse"
         tag: "latest"
       - image: "ubuntu"
