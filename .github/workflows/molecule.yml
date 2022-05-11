@@ -38,7 +38,7 @@ jobs:
           - image: "enterpriselinux"
             tag: "latest"
           - image: "fedora"
-            tag: "34"
+            tag: "35"
           - image: "fedora"
             tag: "latest"
           - image: "fedora"
@@ -46,7 +46,7 @@ jobs:
           - image: "opensuse"
             tag: "latest"
           - image: "ubuntu"
-            tag: "latest"
+            tag: "focal"
     steps:
       - name: checkout
         uses: actions/checkout@v2
