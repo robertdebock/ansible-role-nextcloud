@@ -95,12 +95,12 @@ The default values for the variables are set in `defaults/main.yml`:
 # defaults file for nextcloud
 
 # The version of nextcloud to install.
-nextcloud_version: "23.0.0"
+nextcloud_version: "25.0.2"
 
 # The domain under which this server will be available. For example:
 # "localhost" or "nextcloud.example.com". Does not include protocol identifier,
 # (https://) or directories. (/nextcloud)
-nextcloud_domain_url: "{{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0] ) }}"
+nextcloud_domain_url: "{{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}"
 
 # Database connection details.
 nextcloud_database_name: nextcloud
@@ -126,7 +126,7 @@ nextcloud_admin_pass: N3x4Cl0ud
 #
 # nextcloud_destination: /opt
 #
-nextcloud_destination: "{{ _nextcloud_destination[ansible_distribution] | default(_nextcloud_destination['default'] ) }}"
+nextcloud_destination: "{{ _nextcloud_destination[ansible_distribution] | default(_nextcloud_destination['default']) }}"
 ```
 
 ## [Requirements](#requirements)
@@ -169,7 +169,6 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |---------|----|
 |debian|bullseye|
 |el|8|
-|fedora|all|
 |opensuse|all|
 |ubuntu|focal|
 
