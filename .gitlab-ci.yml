@@ -13,7 +13,7 @@ molecule:
   parallel:
     matrix:
       - image: "debian"
-        tag: "latest"
+        tag: "bookworm"
       - image: "enterpriselinux"
         tag: "8"
       - image: "opensuse"
