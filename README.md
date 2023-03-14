@@ -18,7 +18,6 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   gather_facts: yes
 
   roles:
-    - role: robertdebock.httpd
     - role: robertdebock.nextcloud
       nextcloud_apps:
         - name: richdocumentscode
@@ -95,7 +94,7 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for nextcloud
 
 # The version of nextcloud to install.
-nextcloud_version: "25.0.2"
+nextcloud_version: "25.0.4"
 
 # The domain under which this server will be available. For example:
 # "localhost" or "nextcloud.example.com". Does not include protocol identifier,
