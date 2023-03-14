@@ -51,3 +51,8 @@
     chdir: "{{ nextcloud_destination }}/nextcloud"
   become: yes
   become_user: "{{ nextcloud_httpd_owner }}"
+
+- name: Restart httpd
+  ansible.builtin.service:
+    name: "{{ nextcloud_httpd_service }}"
+    state: restarted

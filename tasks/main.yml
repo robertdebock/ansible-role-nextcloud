@@ -52,6 +52,7 @@
     - Set trusted domains
     - Set permissions
     - Add missing indices
+    - Restart httpd
 
 - name: Install nextcloud app
   ansible.builtin.command:
