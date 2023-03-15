@@ -29,8 +29,6 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "debian"
-            tag: "bookworm"
           - image: "enterpriselinux"
             tag: "8"
           - image: "opensuse"

@@ -42,7 +42,7 @@
     cmd: "{{ nextcloud_command }}"
     creates: "{{ nextcloud_destination }}/nextcloud/data/index.html"
     chdir: "{{ nextcloud_destination }}/nextcloud"
-  no_log: yes
+  # no_log: yes
   become: yes
   become_user: "{{ nextcloud_httpd_owner }}"
   notify:
