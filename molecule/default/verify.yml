@@ -9,7 +9,7 @@
     - ../../defaults/main.yml
 
   tasks:
-    - name: occ check
+    - name: Occ check
       ansible.builtin.command:
         cmd: php occ check
       args:
@@ -18,7 +18,7 @@
       become: yes
       become_user: "{{ nextcloud_httpd_owner }}"
 
-    - name: get status.php
+    - name: Get status.php
       ansible.builtin.uri:
         url: "http://{{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}/nextcloud/status.php"
       register: nextcloud_get_status_php

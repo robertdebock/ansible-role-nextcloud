@@ -31,7 +31,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 
 ```yaml
 ---
-- name: prepare
+- name: Prepare
   hosts: all
   become: yes
   gather_facts: no
@@ -51,13 +51,13 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
     - role: robertdebock.httpd
     - role: robertdebock.redis
 
-- name: continue prepare with facts
+- name: Continue prepare with facts
   hosts: all
   become: yes
   gather_facts: yes
 
   pre_tasks:
-    - name: include remi
+    - name: Include remi
       ansible.builtin.include_role:
         name: robertdebock.remi
       when:
