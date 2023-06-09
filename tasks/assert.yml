@@ -5,6 +5,7 @@
     that:
       - nextcloud_version is defined
       - nextcloud_version is string
+      - nextcloud_version is not none
     quiet: yes
 
 - name: assert | Test if nextcloud_domain_url is set correctly
@@ -12,6 +13,7 @@
     that:
       - nextcloud_domain_url is defined
       - nextcloud_domain_url is string
+      - nextcloud_domain_url is not none
     quiet: yes
 
 - name: assert | Test if nextcloud_database_name is set correctly
@@ -19,6 +21,7 @@
     that:
       - nextcloud_database_name is defined
       - nextcloud_database_name is string
+      - nextcloud_database_name is not none
     quiet: yes
 
 - name: assert | Test if nextcloud_database_user is set correctly
@@ -26,6 +29,7 @@
     that:
       - nextcloud_database_user is defined
       - nextcloud_database_user is string
+      - nextcloud_database_user is not none
     quiet: yes
 
 - name: assert | Test if nextcloud_database_pass is set correctly
@@ -33,6 +37,7 @@
     that:
       - nextcloud_database_pass is defined
       - nextcloud_database_pass is string
+      - nextcloud_database_pass is not none
     quiet: yes
 
 - name: assert | Test if nextcloud_database_host is set correctly
@@ -40,6 +45,7 @@
     that:
       - nextcloud_database_host is defined
       - nextcloud_database_host is string
+      - nextcloud_database_host is not none
     quiet: yes
 
 - name: assert | Test if nextcloud_admin_user is set correctly
@@ -47,6 +53,7 @@
     that:
       - nextcloud_admin_user is defined
       - nextcloud_admin_user is string
+      - nextcloud_admin_user is not none
     quiet: yes
 
 - name: assert | Test if nextcloud_admin_pass is set correctly
@@ -54,6 +61,7 @@
     that:
       - nextcloud_admin_pass is defined
       - nextcloud_admin_pass is string
+      - nextcloud_admin_pass is not none
     quiet: yes
 
 - name: assert | Test if nextcloud_apps is set correctly
@@ -69,6 +77,7 @@
     that:
       - item.name is defined
       - item.name is string
+      - item.name is not none
     quiet: yes
   loop: "{{ nextcloud_apps }}"
   loop_control:
@@ -89,8 +98,10 @@
     that:
       - item.name is defined
       - item.name is string
+      - item.name is not none
       - item.section is defined
       - item.section is string
+      - item.section is not none
       - item.value is defined
     quiet: yes
   loop: "{{ nextcloud_settings }}"
