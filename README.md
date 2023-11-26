@@ -1,4 +1,4 @@
-# Ansible role [nextcloud](#nextcloud)
+# [Ansible role nextcloud](#nextcloud)
 
 Install and configure Nextcloud on your system.
 
