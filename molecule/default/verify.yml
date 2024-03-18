@@ -1,8 +1,8 @@
 ---
 - name: Verify
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   vars_files:
     - ../../vars/main.yml
@@ -14,8 +14,8 @@
         cmd: php occ check
       args:
         chdir: "{{ nextcloud_destination }}/nextcloud"
-      changed_when: no
-      become: yes
+      changed_when: false
+      become: true
       become_user: "{{ nextcloud_httpd_owner }}"
 
     - name: Get status.php
