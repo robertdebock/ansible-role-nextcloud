@@ -2,7 +2,7 @@
 - name: Prepare
   hosts: all
   become: true
-  gather_facts: true
+  gather_facts: false
 
   roles:
     - role: robertdebock.bootstrap
@@ -22,7 +22,7 @@
 - name: Continue prepare with facts
   hosts: all
   become: true
-  gather_facts: true
+  gather_facts: false
 
   pre_tasks:
     - name: Include remi
