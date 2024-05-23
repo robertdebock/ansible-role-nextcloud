@@ -54,7 +54,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 - name: Continue prepare with facts
   hosts: all
   become: true
-  gather_facts: true
+  gather_facts: false
 
   pre_tasks:
     - name: Include remi
