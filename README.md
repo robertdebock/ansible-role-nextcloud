@@ -18,7 +18,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   gather_facts: true
 
   roles:
-    - role: robertdebock.nextcloud
+    - role: ansible-role-nextcloud
       nextcloud_apps:
         - name: richdocumentscode
       nextcloud_settings:
