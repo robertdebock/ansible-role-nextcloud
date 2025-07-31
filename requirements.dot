@@ -1,0 +1,35 @@
+digraph PhiloDilemma {
+  label = "Robert de Bock" ;
+  overlap=false
+  {
+    "nextcloud" [fillcolor=yellow style=filled penwidth=3]
+    "robertdebock.bootstrap" [fillcolor=green style=filled]
+    "robertdebock.buildtools" [fillcolor=green style=filled]
+    "robertdebock.core_dependencies" [fillcolor=green style=filled]
+    "robertdebock.cron" [fillcolor=green style=filled]
+    "robertdebock.epel" [fillcolor=green style=filled]
+    "robertdebock.httpd" [fillcolor=green style=filled]
+    "robertdebock.mysql" [fillcolor=green style=filled]
+    "robertdebock.openssl" [fillcolor=green style=filled]
+    "robertdebock.php" [fillcolor=green style=filled]
+    "robertdebock.php_fpm" [fillcolor=green style=filled]
+    "robertdebock.python_pip" [fillcolor=green style=filled]
+    "robertdebock.redis" [fillcolor=green style=filled]
+    "robertdebock.remi" [fillcolor=green style=filled]
+    "robertdebock.selinux" [fillcolor=green style=filled]
+  }
+  "nextcloud" -> "robertdebock.bootstrap"
+  "nextcloud" -> "robertdebock.buildtools"
+  "nextcloud" -> "robertdebock.core_dependencies"
+  "nextcloud" -> "robertdebock.cron"
+  "nextcloud" -> "robertdebock.epel"
+  "nextcloud" -> "robertdebock.httpd"
+  "nextcloud" -> "robertdebock.mysql"
+  "nextcloud" -> "robertdebock.openssl"
+  "nextcloud" -> "robertdebock.php"
+  "nextcloud" -> "robertdebock.php_fpm"
+  "nextcloud" -> "robertdebock.python_pip"
+  "nextcloud" -> "robertdebock.redis"
+  "nextcloud" -> "robertdebock.remi"
+  "nextcloud" -> "robertdebock.selinux"
+}
