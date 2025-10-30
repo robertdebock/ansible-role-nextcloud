@@ -13,6 +13,7 @@ galaxy_info:
         - "9"
     - name: Ubuntu
       versions:
+        - noble
         - jammy
 
   galaxy_tags:
