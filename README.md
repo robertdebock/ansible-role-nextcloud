@@ -46,7 +46,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
     - role: robertdebock.openssl
       openssl_items:
         - name: apache-httpd
-          common_name: "{{ ansible_fqdn }}"
+          common_name: "{{ ansible_facts['fqdn'] }}"
     - role: robertdebock.selinux
     - role: robertdebock.httpd
     - role: robertdebock.redis
@@ -61,7 +61,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
       ansible.builtin.include_role:
         name: robertdebock.remi
       when:
-        - ansible_distribution != "Fedora"
+        - ansible_facts['distribution'] != "Fedora"
       vars:
         remi_enabled_repositories:
           - php74
@@ -99,7 +99,7 @@ nextcloud_version: "25.0.4"
 # The domain under which this server will be available. For example:
 # "localhost" or "nextcloud.example.com". Does not include protocol identifier,
 # (https://) or directories. (/nextcloud)
-nextcloud_domain_url: "{{ ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}"
+nextcloud_domain_url: "{{ ansible_facts['default_ipv4'].address | default(ansible_facts['all_ipv4_addresses'][0]) }}"
 
 # Database connection details.
 nextcloud_database_name: nextcloud
@@ -125,7 +125,7 @@ nextcloud_admin_pass: N3x4Cl0ud
 #
 # nextcloud_destination: /opt
 #
-nextcloud_destination: "{{ _nextcloud_destination[ansible_distribution] | default(_nextcloud_destination['default']) }}"
+nextcloud_destination: "{{ _nextcloud_destination[ansible_facts['distribution']] | default(_nextcloud_destination['default']) }}"
 ```
 
 ## [Requirements](#requirements)
