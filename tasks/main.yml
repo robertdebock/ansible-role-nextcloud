@@ -24,8 +24,8 @@
     state: true
     persistent: true
   when:
-    - ansible_selinux.status is defined
-    - ansible_selinux.status == "enabled"
+    - ansible_facts['selinux'].status is defined
+    - ansible_facts['selinux'].status == "enabled"
   loop: "{{ nextcloud_sebooleans }}"
 
 - name: Install nextcloud
