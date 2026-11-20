@@ -94,7 +94,7 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for nextcloud
 
 # The version of nextcloud to install.
-nextcloud_version: "25.0.4"
+nextcloud_version: "31.0.14"
 
 # The domain under which this server will be available. For example:
 # "localhost" or "nextcloud.example.com". Does not include protocol identifier,
@@ -169,11 +169,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|9|
 |[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|noble, jammy|
 
-The minimum version of Ansible required is 2.12, tests have been done on:
-
-- The previous version.
-- The current version.
-- The development version.
+The minimum version of Ansible (ansible-core) required is 2.20, tests are done with the latest release of ansible-core.
 
 If you find issues, please register them on [GitHub](https://github.com/robertdebock/ansible-role-nextcloud/issues).
 
